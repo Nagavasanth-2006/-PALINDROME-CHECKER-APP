@@ -1,10 +1,16 @@
 public class UseCasePalindromeCheckerApp {
     public static void main(String[] args) {
+        String original = "madam";
+        String reversed = "";
 
-        System.out.println("Palindrome Checker App");
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
+        }
 
-        System.out.println("Version 1.0");
-
-        System.out.println("Welcome to the Palindrome Checker!");
+        if (original.equals(reversed)) {
+            System.out.println("The string \"" + original + "\" is a palindrome.");
+        } else {
+            System.out.println("The string \"" + original + "\" is NOT a palindrome.");
+        }
     }
 }
