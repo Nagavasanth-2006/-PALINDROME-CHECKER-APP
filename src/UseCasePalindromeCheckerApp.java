@@ -1,27 +1,29 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class UseCasePalindromeCheckerApp {
     public static void main(String[] args) {
-        String input = "noon";
+        String input = "civic";
+
+        Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
         for (char c : input.toCharArray()) {
+            queue.add(c);
             stack.push(c);
         }
 
         boolean isPalindrome = true;
 
-        for (char c : input.toCharArray()) {
-            if (c != stack.pop()) {
+        while (!queue.isEmpty()) {
+            if (!queue.remove().equals(stack.pop())) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        if (isPalindrome) {
-            System.out.println("The string \"" + input + "\" is a palindrome.");
-        } else {
-            System.out.println("The string \"" + input + "\" is NOT a palindrome.");
-        }
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
