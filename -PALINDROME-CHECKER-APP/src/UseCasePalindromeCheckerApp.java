@@ -30,10 +30,8 @@ public class UseCasePalindromeCheckerApp {
         boolean isPalindrome = strategy.check(input);
         long endTime = System.nanoTime();
 
-        long duration = endTime - startTime;
-
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
-        System.out.println("Execution Time : " + duration + " ns");
+        System.out.println("Execution Time : " + (endTime - startTime) + " ns");
     }
 }
