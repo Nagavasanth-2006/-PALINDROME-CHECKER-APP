@@ -1,31 +1,38 @@
 import java.util.Scanner;
 
 public class UseCasePalindromeCheckerApp {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.print("Input : ");
+        String input = scanner.nextLine();
 
-        System.out.println("--- Palindrome Checker ---");
-        System.out.print("Enter a string to check: ");
-        String original = scanner.nextLine();
+        PalindromeService service = new PalindromeService();
+        boolean result = service.checkPalindrome(input);
 
-        String reversed = "";
-
-        // 1. Reverse string using a loop
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i);
-        }
-
-        // 2. Display and Compare result
-        System.out.println("Original: " + original);
-        System.out.println("Reversed: " + reversed);
-
-        // Using equalsIgnoreCase is safer for palindromes like "Madam"
-        if (original.equalsIgnoreCase(reversed)) {
-            System.out.println("Result: The string \"" + original + "\" is a palindrome.");
-        } else {
-            System.out.println("Result: The string \"" + original + "\" is NOT a palindrome.");
-        }
-
+        System.out.println("Is Palindrome? : " + result);
         scanner.close();
+    }
+}
+
+class PalindromeService {
+
+    public boolean checkPalindrome(String input) {
+        if (input == null) {
+            return false;
+        }
+
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+
+        return true;
     }
 }
